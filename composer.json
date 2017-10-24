@@ -1,0 +1,33 @@
+{
+    "name": "tcmlive/opensearch-bridge",
+    "description": "Aliyun Opensearch Bridge for Laravel 5",
+    "keywords": [
+        "aliyun",
+        "opensearch",
+        "laravel"
+    ],
+    "homepage": "https://github.com/shelluni/opensearch-bridge",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "guru",
+            "email": "clock1129@qq.com"
+        }
+    ],
+    "require": {
+        "php" : ">=5.4.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "TcmLive\\Opensearch\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev"
+}
