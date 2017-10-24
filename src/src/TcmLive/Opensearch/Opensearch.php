@@ -1,12 +1,12 @@
 <?php
-namespace Topxia\Service\OpenSearch;
+namespace TcmLive\Opensearch;
 
 require_once dirname(__FILE__).'/Cloudsearch/CloudsearchClient.php';
 require_once dirname(__FILE__).'/Cloudsearch/CloudsearchDoc.php';
 require_once dirname(__FILE__).'/Cloudsearch/CloudsearchIndex.php';
 require_once dirname(__FILE__).'/Cloudsearch/CloudsearchSearch.php';
 
-abstract class OpenSearch
+abstract class Opensearch
 {
     protected $cfgName = '';    //config中OPEN_SEARCH的索引名，一般由子类定义
 
@@ -17,6 +17,8 @@ abstract class OpenSearch
     protected $keysCount = 0;    //如果使用addSearchKeys()时，会记录下当时要搜索的keys数量
     protected $opt = array();    //透过方法传入的$opt，每次调用方法时会积累，最后在search()使用
     protected $effectCount = 0;
+    
+    protected $error = 0;
 
     public function __construct()
     {
@@ -33,8 +35,7 @@ abstract class OpenSearch
 
     protected function openApp($cfgName)
     {
-        $cfgBucket = require(dirname(__FILE__).'/config.php');
-        //$cfgBucket = C('OPEN_SEARCH');
+        $cfgBucket = require(config_path('opensearch.php'));
         if(!isset($cfgBucket[$cfgName]))  return false;
 
         $this->cfg = $cfgBucket[$cfgName];
@@ -364,8 +365,14 @@ abstract class OpenSearch
         }
         else
         {
+            $this->error = $json;
             return false;
         }
+    }
+    
+    public function getError()
+    {
+        return $this->error;
     }
 
 }
