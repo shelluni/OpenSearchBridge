@@ -169,6 +169,7 @@ abstract class Opensearch
 
     public function addRec(&$rec)
     {
+        $recs = array(&$rec);
         return $this->baseCUD('add', array($rec));
     }
 
