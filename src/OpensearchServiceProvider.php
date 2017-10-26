@@ -21,11 +21,11 @@ class OpensearchServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/config/config.php' => config_path('opensearch.php'),
+            __DIR__.'/config.php' => config_path('opensearch.php'),
         ]);
 
         $this->mergeConfigFrom(
-            __DIR__.'/config/config.php', 'opensearch'
+            __DIR__.'/config.php', 'opensearch'
         );
     }
 
