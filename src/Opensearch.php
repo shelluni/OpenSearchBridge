@@ -239,7 +239,10 @@ abstract class Opensearch
         {
             if(!isset($opt['keys']) || empty($opt['keys']))
             {
-                return array();
+                if(empty($opt['forceSearch']) || $opt['forceSearch'] == false)
+                {
+                    return array();
+                }
             }
         }
 
